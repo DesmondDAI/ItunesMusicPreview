@@ -11,9 +11,23 @@ import UIKit
 class MusicTableViewController: UIViewController {
 
     @IBOutlet weak var searchTextFieldContainerView: UIView!
-    @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var searchTextField: UITextField! {
+        didSet {
+            searchTextField.delegate = self
+        }
+    }
+    
     @IBOutlet weak var searchCancelBtn: UIButton!
-    @IBOutlet weak var searchTableView: UITableView!
+    @IBOutlet weak var searchTableView: UITableView! {
+        didSet {
+            searchTableView.dataSource = self
+        }
+    }
+    
+    var searchHistories: [String] {
+        get { return Cache.shared.searchHistories }
+        set { Cache.shared.searchHistories = newValue }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,20 +35,46 @@ class MusicTableViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    // MARK: - Actions
+    @IBAction func searchCancelBtnDidTap(_ sender: UIButton) {
+        searchTextField.resignFirstResponder()
     }
     
+}
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+// MARK: - UITableViewDataSource
+extension MusicTableViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // Only append the one that is different from the latest record
+        if let text = textField.text, searchHistories.last != text {
+            searchHistories.append(text)
+        }
+        searchTableView.reloadData()
+        searchTextField.resignFirstResponder()
+        return true
     }
-    */
+}
 
+
+// MARK: - UITableViewDataSource
+extension MusicTableViewController: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return searchHistories.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let historyCell = tableView.dequeueReusableCell(withIdentifier: Constants.tableViewCellID.searchHistory, for: indexPath) as! SearchHistoryTableViewCell
+        let reverseIndex = searchHistories.count - indexPath.row - 1  // Show latest record at the top
+        let history = searchHistories[reverseIndex]
+        historyCell.historyLabel.text = history
+        return historyCell
+    }
 }
