@@ -6,5 +6,7 @@ target 'ItunesMusicPreview' do
   use_frameworks!
   pod 'Alamofire', '~> 4.5'
   pod 'SwiftyJSON'
+  pod 'SVProgressHUD'
+  pod 'SDWebImage', '~> 4.0'
 
 end

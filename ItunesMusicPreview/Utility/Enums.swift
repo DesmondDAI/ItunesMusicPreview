@@ -11,3 +11,7 @@ import Foundation
 enum ItunesReourcesEntityType: String {
     case musicTrack = "musicTrack"
 }
+
+enum MusicTableDisplayType {
+    case history, tracks, empty
+}

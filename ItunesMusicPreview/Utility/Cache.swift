@@ -13,4 +13,5 @@ class Cache: NSObject {
     static let shared = Cache()
     
     lazy var searchHistories = [String]()
+    lazy var searchMusicTracks = [MusicTrackItem]()
 }
