@@ -9,10 +9,12 @@
 /* Begin PBXBuildFile section */
 		57B118EE211400D17E9AC5A5 /* Pods_ItunesMusicPreview.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB9871C769AA1D33F0FEE391 /* Pods_ItunesMusicPreview.framework */; };
 		EEBEF6511F9C46D900331824 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBEF6501F9C46D900331824 /* AppDelegate.swift */; };
-		EEBEF6531F9C46D900331824 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBEF6521F9C46D900331824 /* ViewController.swift */; };
 		EEBEF6561F9C46D900331824 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEBEF6541F9C46D900331824 /* Main.storyboard */; };
 		EEBEF6581F9C46D900331824 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEBEF6571F9C46D900331824 /* Assets.xcassets */; };
 		EEBEF65B1F9C46D900331824 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEBEF6591F9C46D900331824 /* LaunchScreen.storyboard */; };
+		EEBEF6651F9C4B9C00331824 /* MusicTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBEF6641F9C4B9C00331824 /* MusicTableViewController.swift */; };
+		EEBEF6681F9C51F500331824 /* SearchHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBEF6671F9C51F500331824 /* SearchHistoryTableViewCell.swift */; };
+		EEBEF66A1F9C520200331824 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBEF6691F9C520200331824 /* SearchResultTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,11 +23,13 @@
 		DB9871C769AA1D33F0FEE391 /* Pods_ItunesMusicPreview.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ItunesMusicPreview.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEBEF64D1F9C46D900331824 /* ItunesMusicPreview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ItunesMusicPreview.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEBEF6501F9C46D900331824 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EEBEF6521F9C46D900331824 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EEBEF6551F9C46D900331824 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EEBEF6571F9C46D900331824 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EEBEF65A1F9C46D900331824 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EEBEF65C1F9C46D900331824 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EEBEF6641F9C4B9C00331824 /* MusicTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicTableViewController.swift; sourceTree = "<group>"; };
+		EEBEF6671F9C51F500331824 /* SearchHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryTableViewCell.swift; sourceTree = "<group>"; };
+		EEBEF6691F9C520200331824 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,14 +82,40 @@
 		EEBEF64F1F9C46D900331824 /* ItunesMusicPreview */ = {
 			isa = PBXGroup;
 			children = (
+				EEBEF6661F9C51DC00331824 /* Views */,
+				EEBEF6631F9C4B7200331824 /* Viewcontrollers */,
+				EEBEF6621F9C4B6B00331824 /* Storyboards */,
 				EEBEF6501F9C46D900331824 /* AppDelegate.swift */,
-				EEBEF6521F9C46D900331824 /* ViewController.swift */,
-				EEBEF6541F9C46D900331824 /* Main.storyboard */,
-				EEBEF6571F9C46D900331824 /* Assets.xcassets */,
 				EEBEF6591F9C46D900331824 /* LaunchScreen.storyboard */,
+				EEBEF6571F9C46D900331824 /* Assets.xcassets */,
 				EEBEF65C1F9C46D900331824 /* Info.plist */,
 			);
 			path = ItunesMusicPreview;
+			sourceTree = "<group>";
+		};
+		EEBEF6621F9C4B6B00331824 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				EEBEF6541F9C46D900331824 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		EEBEF6631F9C4B7200331824 /* Viewcontrollers */ = {
+			isa = PBXGroup;
+			children = (
+				EEBEF6641F9C4B9C00331824 /* MusicTableViewController.swift */,
+			);
+			path = Viewcontrollers;
+			sourceTree = "<group>";
+		};
+		EEBEF6661F9C51DC00331824 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EEBEF6671F9C51F500331824 /* SearchHistoryTableViewCell.swift */,
+				EEBEF6691F9C520200331824 /* SearchResultTableViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,8 +241,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EEBEF6531F9C46D900331824 /* ViewController.swift in Sources */,
 				EEBEF6511F9C46D900331824 /* AppDelegate.swift in Sources */,
+				EEBEF6681F9C51F500331824 /* SearchHistoryTableViewCell.swift in Sources */,
+				EEBEF66A1F9C520200331824 /* SearchResultTableViewCell.swift in Sources */,
+				EEBEF6651F9C4B9C00331824 /* MusicTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,6 +385,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 23X5258S94;
 				INFOPLIST_FILE = ItunesMusicPreview/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.desmonddai.ItunesMusicPreview;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -369,6 +402,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 23X5258S94;
 				INFOPLIST_FILE = ItunesMusicPreview/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.desmonddai.ItunesMusicPreview;
 				PRODUCT_NAME = "$(TARGET_NAME)";
