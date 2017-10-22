@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class MusicTableViewController: UIViewController {
 
@@ -18,6 +19,7 @@ class MusicTableViewController: UIViewController {
     }
     
     @IBOutlet weak var searchCancelBtn: UIButton!
+    @IBOutlet weak var searchingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var searchTableView: UITableView! {
         didSet {
             searchTableView.dataSource = self
@@ -41,6 +43,17 @@ class MusicTableViewController: UIViewController {
         searchTextField.resignFirstResponder()
     }
     
+    
+    // MARK: - Internal Methods
+    func startSearchingAnimation() {
+        searchCancelBtn.isHidden = true
+        searchingIndicator.startAnimating()
+    }
+    
+    func stopSearchingAnimation() {
+        searchingIndicator.stopAnimating()
+        searchCancelBtn.isHidden = false
+    }
 }
 
 
@@ -51,8 +64,20 @@ extension MusicTableViewController: UITextFieldDelegate {
         // Only append the one that is different from the latest record
         if let text = textField.text, searchHistories.last != text {
             searchHistories.append(text)
+            startSearchingAnimation()
+            searchTableView.reloadData()
+            API.getItunesMusicForSearchKeyward(text, withCompletionHandler: { (dataResponse) in
+                self.stopSearchingAnimation()
+                switch dataResponse.result {
+                case .success(let response):
+                    let json = JSON(response)
+                    print("result: ", json)
+                    
+                case .failure(let error):
+                    print("error: ", error.localizedDescription)
+                }
+            })
         }
-        searchTableView.reloadData()
         searchTextField.resignFirstResponder()
         return true
     }

@@ -28,6 +28,10 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="search"/>
                                     </textField>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="1oo-4r-jzt">
+                                        <rect key="frame" x="322" y="22" width="20" height="20"/>
+                                        <color key="color" red="0.80156308409999999" green="0.56521334337369467" blue="0.44894550892789808" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </activityIndicatorView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eSH-9I-aZV">
                                         <rect key="frame" x="305" y="16" width="54" height="32"/>
                                         <constraints>
@@ -48,7 +52,9 @@
                                     <constraint firstItem="ytg-eB-JWq" firstAttribute="centerY" secondItem="bbB-Dc-RfH" secondAttribute="centerY" id="QlX-gQ-U5h"/>
                                     <constraint firstAttribute="height" constant="64" id="W4m-UI-l4e"/>
                                     <constraint firstItem="eSH-9I-aZV" firstAttribute="centerY" secondItem="ytg-eB-JWq" secondAttribute="centerY" id="Wp8-CU-8W5"/>
+                                    <constraint firstItem="1oo-4r-jzt" firstAttribute="centerX" secondItem="eSH-9I-aZV" secondAttribute="centerX" id="Zc3-Wt-xWv"/>
                                     <constraint firstAttribute="trailing" secondItem="eSH-9I-aZV" secondAttribute="trailing" constant="16" id="bYU-c2-36X"/>
+                                    <constraint firstItem="1oo-4r-jzt" firstAttribute="centerY" secondItem="eSH-9I-aZV" secondAttribute="centerY" id="cWn-vO-Rbq"/>
                                     <constraint firstItem="ytg-eB-JWq" firstAttribute="leading" secondItem="bbB-Dc-RfH" secondAttribute="leading" constant="16" id="jel-0b-TLH"/>
                                 </constraints>
                             </view>
@@ -125,6 +131,7 @@
                         <outlet property="searchTableView" destination="XB9-Ze-Ga3" id="IbF-6B-acK"/>
                         <outlet property="searchTextField" destination="ytg-eB-JWq" id="1M2-Ym-bWJ"/>
                         <outlet property="searchTextFieldContainerView" destination="bbB-Dc-RfH" id="qfF-iS-BcY"/>
+                        <outlet property="searchingIndicator" destination="1oo-4r-jzt" id="rEb-mE-C78"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

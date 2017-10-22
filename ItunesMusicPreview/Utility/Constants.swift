@@ -18,4 +18,6 @@ struct Constants {
     struct animationDuration {
         static let  searchTextFieldTrailingUpdate: TimeInterval = 0.2
     }
+
+    static let itunesMusicHost = "https://itunes.apple.com/"
 }

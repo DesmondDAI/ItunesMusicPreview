@@ -17,6 +17,8 @@
 		EEBEF66A1F9C520200331824 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBEF6691F9C520200331824 /* SearchResultTableViewCell.swift */; };
 		EEBEF66D1F9C55C200331824 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBEF66C1F9C55C200331824 /* Cache.swift */; };
 		EEBEF66F1F9C56E500331824 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBEF66E1F9C56E500331824 /* Constants.swift */; };
+		EEBEF6711F9C702800331824 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBEF6701F9C702800331824 /* API.swift */; };
+		EEBEF6731F9C709200331824 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBEF6721F9C709200331824 /* Enums.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		EEBEF6691F9C520200331824 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		EEBEF66C1F9C55C200331824 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		EEBEF66E1F9C56E500331824 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		EEBEF6701F9C702800331824 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		EEBEF6721F9C709200331824 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +132,8 @@
 			children = (
 				EEBEF66C1F9C55C200331824 /* Cache.swift */,
 				EEBEF66E1F9C56E500331824 /* Constants.swift */,
+				EEBEF6701F9C702800331824 /* API.swift */,
+				EEBEF6721F9C709200331824 /* Enums.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -261,6 +267,8 @@
 				EEBEF66A1F9C520200331824 /* SearchResultTableViewCell.swift in Sources */,
 				EEBEF6651F9C4B9C00331824 /* MusicTableViewController.swift in Sources */,
 				EEBEF66F1F9C56E500331824 /* Constants.swift in Sources */,
+				EEBEF6731F9C709200331824 /* Enums.swift in Sources */,
+				EEBEF6711F9C702800331824 /* API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
