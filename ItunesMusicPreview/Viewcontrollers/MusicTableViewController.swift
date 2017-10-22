@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AVKit
+import AVFoundation
 import SwiftyJSON
 import SVProgressHUD
 
@@ -178,7 +180,15 @@ extension MusicTableViewController: UITableViewDelegate {
             startSearchingForKeyword(selectedText)
             
         case .tracks:
-            print("TO DO")
+            tableView.deselectRow(at: indexPath, animated: true)
+            let selectedTrack = searchMusicTracks[indexPath.row]
+            let playerVC = storyboard?.instantiateViewController(withIdentifier: Constants.viewControllerID.musicTrackPlayer) as! AVPlayerViewController
+            if let trackURL = URL(string: selectedTrack.previewUrl ?? "") {
+                playerVC.player = AVPlayer(url: trackURL)
+                present(playerVC, animated: true, completion: {
+                    playerVC.player?.play()  // Auto play
+                })
+            }
             
         default:
             break

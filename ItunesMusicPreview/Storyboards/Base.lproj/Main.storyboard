@@ -205,5 +205,13 @@
             </objects>
             <point key="canvasLocation" x="32.799999999999997" y="33.733133433283363"/>
         </scene>
+        <!--AV Player View Controller-->
+        <scene sceneID="6NC-fF-PSX">
+            <objects>
+                <avPlayerViewController storyboardIdentifier="MusicTrackPlayerViewController" videoGravity="AVLayerVideoGravityResizeAspect" id="NAg-jN-EdW" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SLu-sk-ehE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="855" y="34"/>
+        </scene>
     </scenes>
 </document>
