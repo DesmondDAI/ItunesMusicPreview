@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		57B118EE211400D17E9AC5A5 /* Pods_ItunesMusicPreview.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB9871C769AA1D33F0FEE391 /* Pods_ItunesMusicPreview.framework */; };
 		EEBEF6511F9C46D900331824 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBEF6501F9C46D900331824 /* AppDelegate.swift */; };
 		EEBEF6531F9C46D900331824 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBEF6521F9C46D900331824 /* ViewController.swift */; };
 		EEBEF6561F9C46D900331824 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEBEF6541F9C46D900331824 /* Main.storyboard */; };
@@ -15,6 +16,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3E93E9247095F93D167D5615 /* Pods-ItunesMusicPreview.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ItunesMusicPreview.release.xcconfig"; path = "Pods/Target Support Files/Pods-ItunesMusicPreview/Pods-ItunesMusicPreview.release.xcconfig"; sourceTree = "<group>"; };
+		AC250E2421560DCC3BE73C10 /* Pods-ItunesMusicPreview.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ItunesMusicPreview.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ItunesMusicPreview/Pods-ItunesMusicPreview.debug.xcconfig"; sourceTree = "<group>"; };
+		DB9871C769AA1D33F0FEE391 /* Pods_ItunesMusicPreview.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ItunesMusicPreview.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEBEF64D1F9C46D900331824 /* ItunesMusicPreview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ItunesMusicPreview.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEBEF6501F9C46D900331824 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EEBEF6521F9C46D900331824 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -29,17 +33,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57B118EE211400D17E9AC5A5 /* Pods_ItunesMusicPreview.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1634DE20A06A7A7FE92F5718 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DB9871C769AA1D33F0FEE391 /* Pods_ItunesMusicPreview.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4D9DE05F8625586B0884E573 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AC250E2421560DCC3BE73C10 /* Pods-ItunesMusicPreview.debug.xcconfig */,
+				3E93E9247095F93D167D5615 /* Pods-ItunesMusicPreview.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		EEBEF6441F9C46D800331824 = {
 			isa = PBXGroup;
 			children = (
 				EEBEF64F1F9C46D900331824 /* ItunesMusicPreview */,
 				EEBEF64E1F9C46D900331824 /* Products */,
+				4D9DE05F8625586B0884E573 /* Pods */,
+				1634DE20A06A7A7FE92F5718 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,9 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EEBEF65F1F9C46D900331824 /* Build configuration list for PBXNativeTarget "ItunesMusicPreview" */;
 			buildPhases = (
+				702D2E44E5C6E5D771DE75C1 /* [CP] Check Pods Manifest.lock */,
 				EEBEF6491F9C46D800331824 /* Sources */,
 				EEBEF64A1F9C46D800331824 /* Frameworks */,
 				EEBEF64B1F9C46D800331824 /* Resources */,
+				8569C918E440DA909B98F253 /* [CP] Embed Pods Frameworks */,
+				9DDF50C11EBCD56D39866FF4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -130,6 +157,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		702D2E44E5C6E5D771DE75C1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8569C918E440DA909B98F253 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ItunesMusicPreview/Pods-ItunesMusicPreview-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9DDF50C11EBCD56D39866FF4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ItunesMusicPreview/Pods-ItunesMusicPreview-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EEBEF6491F9C46D800331824 /* Sources */ = {
@@ -272,6 +347,7 @@
 		};
 		EEBEF6601F9C46D900331824 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AC250E2421560DCC3BE73C10 /* Pods-ItunesMusicPreview.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -287,6 +363,7 @@
 		};
 		EEBEF6611F9C46D900331824 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3E93E9247095F93D167D5615 /* Pods-ItunesMusicPreview.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
