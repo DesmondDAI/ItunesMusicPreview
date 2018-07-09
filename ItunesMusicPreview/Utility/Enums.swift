@@ -12,6 +12,6 @@ enum ItunesReourcesEntityType: String {
     case musicTrack = "musicTrack"
 }
 
-enum MusicTableDisplayType {
-    case history, tracks, empty
+enum MusicTracksModelType {
+    case history, track
 }

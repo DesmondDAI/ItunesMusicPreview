@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		57B118EE211400D17E9AC5A5 /* Pods_ItunesMusicPreview.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB9871C769AA1D33F0FEE391 /* Pods_ItunesMusicPreview.framework */; };
 		EE15B0451F9CD781006982CA /* MusicTrackItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE15B0441F9CD781006982CA /* MusicTrackItem.swift */; };
+		EE8E540220F3C55100B940CC /* SearchHistoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8E540120F3C55100B940CC /* SearchHistoriesViewModel.swift */; };
 		EEBEF6511F9C46D900331824 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBEF6501F9C46D900331824 /* AppDelegate.swift */; };
 		EEBEF6561F9C46D900331824 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEBEF6541F9C46D900331824 /* Main.storyboard */; };
 		EEBEF6581F9C46D900331824 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEBEF6571F9C46D900331824 /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 		EEBEF66F1F9C56E500331824 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBEF66E1F9C56E500331824 /* Constants.swift */; };
 		EEBEF6711F9C702800331824 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBEF6701F9C702800331824 /* API.swift */; };
 		EEBEF6731F9C709200331824 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBEF6721F9C709200331824 /* Enums.swift */; };
+		EECC6F2D20F251BC00FF0798 /* MusicTracksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECC6F2C20F251BC00FF0798 /* MusicTracksViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,7 @@
 		AC250E2421560DCC3BE73C10 /* Pods-ItunesMusicPreview.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ItunesMusicPreview.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ItunesMusicPreview/Pods-ItunesMusicPreview.debug.xcconfig"; sourceTree = "<group>"; };
 		DB9871C769AA1D33F0FEE391 /* Pods_ItunesMusicPreview.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ItunesMusicPreview.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE15B0441F9CD781006982CA /* MusicTrackItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicTrackItem.swift; sourceTree = "<group>"; };
+		EE8E540120F3C55100B940CC /* SearchHistoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoriesViewModel.swift; sourceTree = "<group>"; };
 		EEBEF64D1F9C46D900331824 /* ItunesMusicPreview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ItunesMusicPreview.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEBEF6501F9C46D900331824 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EEBEF6551F9C46D900331824 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -40,6 +43,7 @@
 		EEBEF66E1F9C56E500331824 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		EEBEF6701F9C702800331824 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		EEBEF6721F9C709200331824 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		EECC6F2C20F251BC00FF0798 /* MusicTracksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicTracksViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,7 @@
 		EEBEF64F1F9C46D900331824 /* ItunesMusicPreview */ = {
 			isa = PBXGroup;
 			children = (
+				EECC6F2B20F250F400FF0798 /* ViewModels */,
 				EE15B0431F9CD714006982CA /* Models */,
 				EEBEF66B1F9C55A500331824 /* Utility */,
 				EEBEF6661F9C51DC00331824 /* Views */,
@@ -147,6 +152,15 @@
 				EEBEF6721F9C709200331824 /* Enums.swift */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		EECC6F2B20F250F400FF0798 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				EECC6F2C20F251BC00FF0798 /* MusicTracksViewModel.swift */,
+				EE8E540120F3C55100B940CC /* SearchHistoriesViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,7 +290,9 @@
 				EEBEF6651F9C4B9C00331824 /* MusicTableViewController.swift in Sources */,
 				EEBEF66F1F9C56E500331824 /* Constants.swift in Sources */,
 				EEBEF6731F9C709200331824 /* Enums.swift in Sources */,
+				EECC6F2D20F251BC00FF0798 /* MusicTracksViewModel.swift in Sources */,
 				EEBEF6711F9C702800331824 /* API.swift in Sources */,
+				EE8E540220F3C55100B940CC /* SearchHistoriesViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

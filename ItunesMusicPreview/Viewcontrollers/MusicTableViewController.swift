@@ -31,83 +31,66 @@ class MusicTableViewController: UIViewController {
         }
     }
     
-    var sharedCache: Cache {return Cache.shared }
+    var musicTracksViewModel: MusicTracksViewModel!
+    var searchHistoriesViewModel: SearchHistoriesViewModel!
     
-    var searchHistories: [String] {
-        get { return sharedCache.searchHistories }
-        set { sharedCache.searchHistories = newValue }
-    }
-    
-    var searchMusicTracks: [MusicTrackItem] {
-        get { return sharedCache.searchMusicTracks }
-        set { sharedCache.searchMusicTracks = newValue }
-    }
-    
-    var tableDisplayType: MusicTableDisplayType = .empty {
-        didSet {
-            emptyIndicatorLabel.isHidden = tableDisplayType == .empty ? false : true
-        }
-    }
-    var searchKeyword = ""  // For storing search keyword for recent tracks
+    var tableDisplayType: MusicTracksModelType = .track
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupViewModels()
     }
     
     
     // MARK: - Actions
     @IBAction func searchCancelBtnDidTap(_ sender: UIButton) {
-        guard searchTextField.isFirstResponder else { return }
         searchTextField.resignFirstResponder()
-        searchTextField.text = searchKeyword
+        searchTextField.text = musicTracksViewModel.keyword
     }
     
     
     // MARK: - Internal Methods
+    func setupViewModels() {
+        musicTracksViewModel = MusicTracksViewModel()
+        searchHistoriesViewModel = SearchHistoriesViewModel()
+    }
+    
     func startSearchingAnimation() {
         searchCancelBtn.isHidden = true
         searchingIndicator.startAnimating()
     }
     
     func stopSearchingAnimation() {
-        searchingIndicator.stopAnimating()
         searchCancelBtn.isHidden = false
+        searchingIndicator.stopAnimating()
     }
     
-    func startSearchingForKeyword(_ keyword: String) {
+    func startSearchingForKeyword(_ keyword: String?) {
+        guard let keyword = keyword else { return }
+        
+        searchTextField.text = keyword
+        emptyIndicatorLabel.isHidden = true
         startSearchingAnimation()
-        searchKeyword = searchTextField.text ?? ""
-        API.getItunesMusicForSearchKeyward(keyword, withCompletionHandler: { (dataResponse) in
+        
+        self.musicTracksViewModel.requestMusicTracksForKeyword(keyword) { (success, error) in
             self.stopSearchingAnimation()
-            switch dataResponse.result {
-            case .success(let response):
-                let json = JSON(response)
-                if let musicTracks = API.parseItunesMusicSearchJsonResponse(json) {
-                    self.searchMusicTracks = musicTracks
-                }
+            if success {
                 self.searchTableView.reloadData()
-                self.emptyIndicatorLabel.isHidden = self.searchMusicTracks.count == 0 ? false : true
-                
-            case .failure(let error):
+            } else if let error = error {
                 SVProgressHUD.showError(withStatus: error.localizedDescription)
             }
-        })
+        }
     }
 }
 
 
-// MARK: - UITableViewDataSource
+// MARK: - UITableViewDelegate
 extension MusicTableViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        searchKeyword = textField.text ?? ""
-        searchMusicTracks = [MusicTrackItem]()  // Clear previous search result
         searchTextField.resignFirstResponder()
-        // Only append the one that is different from the latest record
-        if let text = textField.text, searchHistories.last != text {
-            searchHistories.insert(text, at: 0)  // Reverse order
-            startSearchingForKeyword(text)
-        }
+        startSearchingForKeyword(textField.text)
+        
         return true
     }
     
@@ -117,7 +100,7 @@ extension MusicTableViewController: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        tableDisplayType = .tracks
+        tableDisplayType = .track
         searchTableView.reloadData()
     }
 }
@@ -127,38 +110,44 @@ extension MusicTableViewController: UITextFieldDelegate {
 extension MusicTableViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        switch tableDisplayType {
+        case .history:
+            return searchHistoriesViewModel.numberOfSections()
+            
+        case .track:
+            return musicTracksViewModel.numberOfSections()
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        var rows = 0;
+        
         switch tableDisplayType {
         case .history:
-            return searchHistories.count
+            rows = searchHistoriesViewModel.numberOfItemsInSection(section)
             
-        case .tracks:
-            return searchMusicTracks.count
-            
-        default:
-            return 0
+        case .track:
+            rows = musicTracksViewModel.numberOfItemsInSection(section)
         }
+        
+        emptyIndicatorLabel.isHidden = (rows == 0) ? false : true
+        
+        return rows
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch tableDisplayType {
         case .history:
             let historyCell = tableView.dequeueReusableCell(withIdentifier: Constants.tableViewCellID.searchHistory, for: indexPath) as! SearchHistoryTableViewCell
-            let history = searchHistories[indexPath.row]
+            let history = self.searchHistoriesViewModel.itemForIndexPath(indexPath)
             historyCell.historyLabel.text = history
             return historyCell
             
-        case .tracks:
+        case .track:
             let trackCell = tableView.dequeueReusableCell(withIdentifier: Constants.tableViewCellID.searchResult, for: indexPath) as! SearchResultTableViewCell
-            let trackItem = searchMusicTracks[indexPath.row]
+            let trackItem = self.musicTracksViewModel.itemForIndexPath(indexPath)
             trackCell.loadMusicTrackItem(trackItem)
             return trackCell
-            
-        default:
-            return UITableViewCell()
         }
     }
 }
@@ -170,28 +159,23 @@ extension MusicTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch tableDisplayType {
         case .history:
-            let selectedText = searchHistories[indexPath.row]
             searchTextField.resignFirstResponder()
-            searchTextField.text = selectedText
-            searchKeyword = selectedText
-            if searchHistories.first != selectedText {  // Only append the one that is different from the previous one
-                searchHistories.insert(selectedText, at: 0)
+            if let selectedText = self.searchHistoriesViewModel.itemForIndexPath(indexPath) {
+                startSearchingForKeyword(selectedText)
             }
-            startSearchingForKeyword(selectedText)
             
-        case .tracks:
+        case .track:
             tableView.deselectRow(at: indexPath, animated: true)
-            let selectedTrack = searchMusicTracks[indexPath.row]
-            let playerVC = storyboard?.instantiateViewController(withIdentifier: Constants.viewControllerID.musicTrackPlayer) as! AVPlayerViewController
-            if let trackURL = URL(string: selectedTrack.previewUrl ?? "") {
-                playerVC.player = AVPlayer(url: trackURL)
-                present(playerVC, animated: true, completion: {
-                    playerVC.player?.play()  // Auto play
-                })
+            if let selectedTrack = self.musicTracksViewModel.itemForIndexPath(indexPath) {
+                let playerVC = storyboard?.instantiateViewController(withIdentifier: Constants.viewControllerID.musicTrackPlayer) as! AVPlayerViewController
+                if let trackURL = URL(string: selectedTrack.previewUrl ?? "") {
+                    playerVC.player = AVPlayer(url: trackURL)
+                    present(playerVC, animated: true, completion: {
+                        playerVC.player?.play()  // Auto play
+                    })
+                }
             }
-            
-        default:
-            break
         }
     }
+    
 }

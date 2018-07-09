@@ -18,13 +18,13 @@ class SearchResultTableViewCell: UITableViewCell {
     
     
     // MARK: - Api
-    func loadMusicTrackItem(_ item: MusicTrackItem) {
-        if let coverUrl = URL(string: item.artworkUrl ?? "") {
+    func loadMusicTrackItem(_ item: MusicTrackItem?) {
+        if let coverUrl = URL(string: item?.artworkUrl ?? "") {
             coverImageView.sd_setImage(with: coverUrl, completed: nil)
         }
-        trackNameLabel.text = item.trackName
-        artistLabel.text = item.artistName
-        collectionNameLabel.text = item.collectionName ?? "-"
+        trackNameLabel.text = item?.trackName
+        artistLabel.text = item?.artistName
+        collectionNameLabel.text = item?.collectionName ?? "-"
     }
 
 }
